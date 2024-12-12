@@ -35,12 +35,13 @@
         },
         data() {
             return {
-                ranking: []
+                ranking: [],
+                apiUrl: process.env.VUE_APP_BACKEND_API_URL
             }
         },
         methods: {
             fetchRanking() {
-                fetch("http://localhost:3000/api/ranking")
+                fetch(`${this.apiUrl}/api/ranking`)
                     .then(response => response.json())
                     .then(data => {
                         console.log(data);
