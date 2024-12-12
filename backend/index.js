@@ -1,11 +1,15 @@
 // Importeren van de express module in node_modules
 const express = require('express');
 const cors = require('cors');
+require('dotenv').config();
 const bodyParser = require('body-parser');
 const Database = require('./classes/database.js');
 
 // Aanmaken van een express app
 const app = express();
+// Configureren van de PORT en HOST
+const port = process.env.PORT || 3000;
+const host = process.env.HOST || 'localhost';
 
 // Enable CORS
 app.use(cors({
@@ -40,7 +44,7 @@ app.get('/api/songs', (req, res) => {
     const db = new Database();
     db.getQuery(`
         SELECT
-            song_id, s.name AS songname, a.name AS artistname
+            song_id, s.name AS song_name, a.name AS artist_name
         FROM
             songs AS s
                 INNER JOIN
@@ -99,6 +103,6 @@ app.post('/api/votes', (req, res) => {
 });
 
 // Starten van de server en op welke port de server moet luistere
-app.listen(3000, () => {
-  console.log('Server is running on port 3000');
+app.listen(port, host, () => {
+    console.log(`Server running at http://${host}:${port}/`);
 });
