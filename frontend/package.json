@@ -58,18 +58,7 @@
     "moduleNameMapper": {
       "^@/(.*)$": "<rootDir>/src/$1"
     },
-    "collectCoverage": true,
-    "collectCoverageFrom": [
-      "src/components/**/*.{js,vue}",
-      "!**/node_modules/**"
-    ],
-    "coveragePathIgnorePatterns": [
-      "/node_modules/",
-      "/coverage/",
-      "babel.config.js",
-      "vue.config.js",
-      "src/main.js"
-    ],
+    "collectCoverage": false,
     "testEnvironment": "jsdom"
   },
   "browserslist": [
