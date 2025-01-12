@@ -26,9 +26,9 @@ jobs:
         run: npm test
         working-directory: ./backend
 
-      - name: Set lowercase owner
+      - name: Set lowercase repo owner
         id: vars
-        run: echo "REPO_OWNER_LC=${GITHUB_REPOSITORY_OWNER,,}" >> $GITHUB_ENV
+        run: echo "REPO_OWNER_LC=$(echo ${{ github.repository_owner }} | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
 
       - name: Build Docker image
         run: docker build -t ghcr.io/${{ env.REPO_OWNER_LC }}/examen-backend:latest ./backend
