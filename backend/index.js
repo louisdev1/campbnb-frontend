@@ -5,6 +5,21 @@ require('dotenv').config();
 const bodyParser = require('body-parser');
 const Database = require('./classes/database.js');
 
+    const winston = require('winston');
+
+    const logger = winston.createLogger({
+      level: 'info',
+      format: winston.format.combine(
+        winston.format.timestamp(),
+        winston.format.json()
+      ),
+      transports: [
+        new winston.transports.Console(),
+        new winston.transports.File({ filename: 'logs/app.log' })
+      ],
+    });
+    
+
 // Aanmaken van een express app
 const app = express();
 // Configureren van de PORT en HOST
