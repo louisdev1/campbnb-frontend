@@ -1,0 +1,16 @@
+# Node modules
+node_modules/
+# Logbestanden
+*.log
+# Docker bestanden
+docker-compose.override.yml
+# Omgevingsvariabelen
+.env
+# Systeem- en cachebestanden
+.DS_Store
+Thumbs.db
+*.tmp
+# Windows-specifieke mappen
+AppData/
+Local Settings/
+Temporary Internet Files/
